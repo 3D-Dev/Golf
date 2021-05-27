@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Screen Recording</string>
+
+    <string name="recording_api_unavailable"> Recording API not available</string>
+    <string name="screen_capture_permission_denied"> Permission denied for screen capture</string>
+    <string name="request_required_permissions">Please enable Microphone and Storage permissions from settings.</string>
+    <string name="failure_when_recording">Failure while recording</string>
+
+    <string name="title_activity_preview_recording">PreviewRecordingActivity</string>
+
+    <string name="share">Share</string>
+
+    <string name="play_preview">Play Preview</string>
+
+</resources>
