@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 #if UNITY_IOS
 using System.Runtime.InteropServices;
 using System.IO;
@@ -9,7 +9,13 @@ namespace VoxelBusters.ReplayKit.Internal
 {
     public partial class ReplayKitIOS : MonoBehaviour, INativeService
     {
+        public Button start;
+        public Button preview;
+        public Sprite[] imageList;
+    
         private INativeCallbackListener m_listener;
+        private bool recordingStatus = false;
+
 
 #region Native Methods
 
@@ -76,7 +82,17 @@ namespace VoxelBusters.ReplayKit.Internal
 
         public void StartRecording(bool enableMicrophone)
         {
-            replaykit_startRecording(enableMicrophone);
+            if(!recordingStatus) {
+                replaykit_startRecording(enableMicrophone);
+                start.GetComponent<Image>().sprite = imageList[1];
+            }
+            else {
+                replaykit_stopRecording();
+                SavePreview();    
+                start.GetComponent<Image>().sprite = imageList[0];
+            }
+            recordingStatus = !recordingStatus;
+           
         }
 
         public void StopRecording()
